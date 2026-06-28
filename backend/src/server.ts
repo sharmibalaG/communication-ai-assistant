@@ -3,7 +3,10 @@ dotenv.config();
 
 import app from "./app";
 
-const PORT = process.env.PORT || 3000;
+console.log("NODE_ENV:", process.env.NODE_ENV);
+console.log("PORT:", process.env.PORT);
+
+const PORT = process.env.PORT || 10000;
 
 app.listen(PORT, () => {
     console.log(
