@@ -50,8 +50,7 @@ const DraftCommunication = ({
 
     const {
         refine,
-        loading,
-        error
+        loading
     } = useCommunicationForm();
 
   const handleRefine = async () => {

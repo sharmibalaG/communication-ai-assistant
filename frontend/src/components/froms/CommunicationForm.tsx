@@ -22,7 +22,7 @@ interface CreateCommunicationProps {
         >;
 }
 
-const CreateCommunication = ({setCurrentStep, draft, setDraft, versions, setVersions}: CreateCommunicationProps) => {
+const CreateCommunication = ({setCurrentStep, setDraft, setVersions}: CreateCommunicationProps) => {
 
      const { t } = useTranslation();
 
@@ -35,8 +35,7 @@ const CreateCommunication = ({setCurrentStep, draft, setDraft, versions, setVers
     tone: "Professional",
   });
 
-  const [errors, setErrors] = useState<
-  Record<string, string[]>>({});
+const [errors, setErrors] = useState<Record<string, string[] | undefined>>({});
 
   const {
     loading,
@@ -49,7 +48,7 @@ const CreateCommunication = ({setCurrentStep, draft, setDraft, versions, setVers
       HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
     >
   ) => {
-    const { name, value } = e.target;
+    const { name } = e.target;
     setForm({
       ...form,
       [e.target.name]: e.target.value,
