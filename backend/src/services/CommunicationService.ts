@@ -1,7 +1,6 @@
 import { ProviderFactory } from "../providers/ProviderFactory";
 import { PromptBuilder } from "../prompt/PromptBuild";
-import { GenerateDraftRequest } from "../models/CommunicationReq";
-import { RefineDraftRequest } from "../models/CommunicationRes";
+import { GenerateDraftRequest, RefineDraftRequest } from "../models/CommunicationReq";
 import { CommunicationResponse } from '../models/CommunicationRes';
 
 export class CommunicationService {

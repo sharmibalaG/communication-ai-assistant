@@ -14,7 +14,7 @@ export default {
   professional:"Professional",
   friendly:"Friendly",
   eventRecap: "Event Recap",
-  excutiveSummary:"Executive Summary",
+  excutiveRemaindar:"Remainder",
   partnerAnnouncement: "Announcement",
   allEmployees:"All Employees",
   executives:"Executives",
