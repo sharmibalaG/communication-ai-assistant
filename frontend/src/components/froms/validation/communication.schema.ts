@@ -20,7 +20,7 @@ export const communicationSchema = z.object({
 
   keyHighlights: z
     .string()
-    .min(1, "Please enter at least one highlight.")
+    .min(1, "Please enter atleast one highlight.")
     .max(1000, "Highlights cannot exceed 1000 characters."),
 
   tone: z.string(),

@@ -9,7 +9,7 @@ const BASE_URL = `${ENV.API_BASE_URL}/communications`;
 export async function generateDraft(
   request: CommunicationRequest
 ): Promise<CommunicationResponse> {
-  console.log("Sending Request:", request);
+
   const response = await fetch(`${BASE_URL}/draft`, {
     method: "POST",
     headers: {
@@ -19,7 +19,7 @@ export async function generateDraft(
   });
 
   if (!response.ok) {
-    throw new Error("Unable to generate communication.");
+    throw new Error("Unable to generate communication. Please try again later.");
   }
 
   const result = await response.json();

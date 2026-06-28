@@ -14,8 +14,6 @@ export class ProviderFactory {
         const provider =
             process.env.LLM_PROVIDER as ProviderType;
 
-            console.log("LLM_PROVIDER:", process.env.LLM_PROVIDER);
-
         switch (provider) {
 
             case ProviderType.MOCK:

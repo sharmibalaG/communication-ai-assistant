@@ -61,7 +61,6 @@ const [errors, setErrors] = useState<Record<string, string[] | undefined>>({});
 
   const  handleGenerate = async () => {
     const validation = communicationSchema.safeParse(form);
-    console.log(validation);
     if (!validation.success) {
 
     const fieldErrors =
@@ -142,7 +141,7 @@ const [errors, setErrors] = useState<Record<string, string[] | undefined>>({});
               <option value="">Select</option>
               <option>Event Recap</option>
               <option>Executive Summary</option>
-              <option>Partner Announcement</option>
+              <option>Announcement</option>
             </select>
             <FieldError error={errors.communicationType} />
           </div>
@@ -249,6 +248,12 @@ const [errors, setErrors] = useState<Record<string, string[] | undefined>>({});
           </select>
         </div>
 
+        {error && (
+            <div className="mb-4 mt-4 rounded-lg border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700">
+                {error}
+            </div>
+        )}
+
         <div className="mt-8 flex justify-end">
 
           <button
@@ -261,15 +266,6 @@ const [errors, setErrors] = useState<Record<string, string[] | undefined>>({});
                 ? "Generating..."
                 : "Generate Draft"}
           </button>
-
-          {
-            error && (
-                <p className="mt-3 text-sm text-red-600">
-                    {error}
-                </p>
-            )
-        }
-
         </div>
 
       </form>

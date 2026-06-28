@@ -31,7 +31,7 @@ const generate = async (
 
     } catch (error) {
 
-        setError("Unable to generate communication.");
+        setError("Unable to generate communication. Please try again later.");
 
         throw error;
 

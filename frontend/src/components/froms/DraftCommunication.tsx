@@ -253,7 +253,6 @@ const DraftCommunication = ({
 
             <VersionHistory
                 versions={versions}
-                currentVersionId={versions[versions.length - 1]?.id ?? 0}
                 onSelectVersion={handleVersionSelect}
             />
 

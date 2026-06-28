@@ -115,49 +115,47 @@ ${draft.communication}`;
 
       {/* Footer */}
 
-      <div className="mt-8 flex items-center justify-between">
+       <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
 
         {/* Left */}
         <button
             type="button"
             onClick={onBack}
-            className="rounded-lg border border-gray-300 px-6 py-3 font-medium text-gray-700 transition hover:bg-gray-100"
+            className="w-full rounded-lg border border-gray-300 px-6 py-3 font-medium text-gray-700 transition hover:bg-gray-100 sm:w-auto"
         >
-           {t("backToDraft")}
+            {t("backToDraft")}
         </button>
 
-            {/* Right */}
-            <div className="flex gap-4">
+        {/* Right */}
+        <div className="flex w-full flex-col gap-3 sm:w-auto sm:flex-row sm:gap-4">
 
-                <button
-                type="button"
-                onClick={handleExport}
-                className="rounded-lg border border-[#8b1d41] px-6 py-3 font-medium text-[#8b1d41] transition hover:bg-red-50"
-                >
-                {t("export")}
-               
-                </button>
+            <button
+            type="button"
+            onClick={handleExport}
+            className="w-full whitespace-nowrap rounded-lg border border-[#8b1d41] px-6 py-3 font-medium text-[#8b1d41] transition hover:bg-red-50 sm:w-auto"
+            >
+            {t("export")}
+            </button>
 
-                <button
-                type="button"
-                onClick={handleCopy}
-                className="rounded-lg border border-[#8b1d41] px-6 py-3 font-medium text-[#8b1d41] transition hover:bg-red-50"
-                >
-                {t("copy")}
-                </button>
+            <button
+            type="button"
+            onClick={handleCopy}
+            className="w-full whitespace-nowrap rounded-lg border border-[#8b1d41] px-6 py-3 font-medium text-[#8b1d41] transition hover:bg-red-50 sm:w-auto"
+            >
+            {t("copy")}
+            </button>
 
-                <button
-                type="button"
-                onClick={onNewCommunication}
-                className="rounded-lg bg-[#8b1d41] px-6 py-3 font-medium text-white transition hover:bg-[#741635]"
-                >
-                 {t("startNewCommunication")}
-                
-                </button>
+            <button
+            type="button"
+            onClick={onNewCommunication}
+            className="w-full whitespace-nowrap rounded-lg bg-[#8b1d41] px-6 py-3 font-medium text-white transition hover:bg-[#741635] sm:w-auto"
+            >
+            {t("startNewCommunication")}
+            </button>
 
-            </div>
+        </div>
 
-            </div>
+    </div>
 
     </div>
   );
