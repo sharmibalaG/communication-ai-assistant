@@ -1,4 +1,4 @@
-import type { RefineDraftRequest } from "../../models/CommunicationRes";
+import { RefineDraftRequest } from "../../models/CommunicationReq";
 import type { CommunicationResponse } from "../ProviderType";
 
 export class RefineTemplates {
@@ -19,25 +19,58 @@ export class RefineTemplates {
                 return this.shorter(request);
 
             default:
-                return this.professional(request);
-
+                return {
+                    subject: request.subject,
+                    communication: request.communication,
+                };
         }
+    }
 
+    /**
+     * Removes any previously applied refinement footer so
+     * refinements don't keep appending content.
+     */
+    private static cleanCommunication(text: string): string {
+
+        return text
+
+            // Friendly footer
+            .replace(
+                /\n*We're excited to have you with us[\s\S]*?Best regards,\s*Corporate Communications\s*/gi,
+                ""
+            )
+
+            // Professional footer
+            .replace(
+                /\n*We appreciate your attention and continued support\.\s*Corporate Communications\s*/gi,
+                ""
+            )
+
+            // Shorter footer
+            .replace(
+                /\n*Thank you\.\s*Corporate Communications\s*/gi,
+                ""
+            )
+
+            // Remove trailing whitespace
+            .trim();
     }
 
     private static professional(
         request: RefineDraftRequest
     ): CommunicationResponse {
 
+        const content = this.cleanCommunication(
+            request.communication
+        );
+
         return {
 
             subject: request.subject,
 
-            communication: `Dear Team,
+            communication: `${content}
 
-${request.communication}
-
-Thank you for your continued commitment and support.
+We appreciate your attention and continued support.
 
 Corporate Communications`
 
@@ -49,17 +82,17 @@ Corporate Communications`
         request: RefineDraftRequest
     ): CommunicationResponse {
 
+        const content = this.cleanCommunication(
+            request.communication
+        );
+
         return {
 
-            subject: `Thanks for Joining ${request.subject}!`,
+            subject: request.subject,
 
-            communication: `Hi everyone,
+            communication: `${content}
 
-Thanks for making this event such a success!
-
-${request.communication}
-
-We really appreciate everyone's participation and look forward to seeing you at our next event!
+We're excited to have you with us and truly appreciate your participation. We hope to see you again at our upcoming events!
 
 Best regards,
 
@@ -73,20 +106,25 @@ Corporate Communications`
         request: RefineDraftRequest
     ): CommunicationResponse {
 
+        const content = this.cleanCommunication(
+            request.communication
+        );
+
+        const paragraphs = content
+            .split("\n\n")
+            .filter(p => p.trim());
+
+        const shortened = paragraphs
+            .slice(0, 4)
+            .join("\n\n");
+
         return {
 
             subject: request.subject,
 
-            communication: `Thank you for participating.
+            communication: `${shortened}
 
-Key Highlights:
-
-• ${request.communication
-                .split("\n")
-                .slice(0, 3)
-                .join("\n")}
-
-We appreciate your continued support.
+Thank you.
 
 Corporate Communications`
 

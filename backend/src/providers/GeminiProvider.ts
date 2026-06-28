@@ -3,9 +3,8 @@ import { GoogleGenAI } from "@google/genai";
 import type { LLMProvider } from "./LLMProvider";
 
 import type {
-    GenerateDraftRequest,
+    GenerateDraftRequest,RefineDraftRequest
 } from "../models/CommunicationReq";
-import type { RefineDraftRequest } from "../models/CommunicationRes"
 
 import type { CommunicationResponse } from "../models/CommunicationRes";
 

@@ -6,3 +6,9 @@ export interface GenerateDraftRequest {
   keyHighlights: string;
   tone: string;
 }
+
+export interface RefineDraftRequest {
+  subject: string;
+  communication: string;
+  refinement: "professional" | "friendly" | "shorter";
+}

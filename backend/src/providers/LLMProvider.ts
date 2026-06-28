@@ -1,8 +1,8 @@
 import type {
     GenerateDraftRequest,
+    RefineDraftRequest
 } from "../models/CommunicationReq";
 
-import type { RefineDraftRequest } from "../models/CommunicationRes";
 
 import type { CommunicationResponse } from "./ProviderType";
 

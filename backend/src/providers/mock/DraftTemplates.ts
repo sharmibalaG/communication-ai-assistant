@@ -12,10 +12,10 @@ export class DraftTemplates {
             case "Event Recap":
                 return this.buildEventRecap(request);
 
-            case "Executive Summary":
-                return this.buildExecutiveSummary(request);
+            case "Remainder":
+                return this.buildReminder(request);
 
-            case "Partner Announcement":
+            case "Announcement":
                 return this.buildPartnerAnnouncement(request);
 
             default:
@@ -38,77 +38,102 @@ export class DraftTemplates {
             request.audience === "Executives"
                 ? `Executive Recap: ${request.eventName}`
                 : `Highlights from ${request.eventName}`;
+        const closingMessage =
+            request.tone === "Friendly"
+                ? "Thank you for making this event a success! We hope you enjoyed it and look forward to seeing you at our next event."
+                : "We appreciate your participation and contributions in making this event a success. We look forward to your continued support in future initiatives.";
 
         return {
+            subject: `Recap: ${request.eventName}`,
 
-            subject,
+            communication: `Dear ${request.audience},
 
-            communication: `${greeting}
+Thank you to everyone who participated in ${request.eventName} on ${request.eventDate}.
 
-Thank you for participating in ${request.eventName}, held on ${request.eventDate}.
+The event was a great success, bringing colleagues together to collaborate, share ideas, and explore new opportunities.
 
-The event brought together colleagues across the organization to explore innovation, collaboration and emerging AI capabilities.
+Key Highlights
 
-Key Highlights:
+${request.keyHighlights
+                    .split("\n")
+                    .filter(line => line.trim())
+                    .map(line => `• ${line.trim()}`)
+                    .join("\n")}
 
-${request.keyHighlights}
+${closingMessage}
 
-Thank you to everyone who contributed to making this event successful.
-
-Corporate Communications`
-
+Corporate Communications`,
         };
+
 
     }
 
-    private static buildExecutiveSummary(
+    private static buildReminder(
         request: GenerateDraftRequest
     ): CommunicationResponse {
 
+        const closingMessage =
+            request.tone === "Friendly"
+                ? "We're looking forward to seeing everyone there. Thank you for your continued enthusiasm and participation!"
+                : "We appreciate your attention and look forward to your participation in this important event.";
+
         return {
+            subject: `Reminder: ${request.eventName}`,
 
-            subject: `Executive Summary: ${request.eventName}`,
+            communication: `Dear ${request.audience},
 
-            communication: `Dear Executive Team,
+This is a friendly reminder that ${request.eventName} is scheduled for ${request.eventDate}.
 
-Please find below the executive summary for ${request.eventName} held on ${request.eventDate}.
+The event will provide valuable opportunities to collaborate, learn, and engage with colleagues across the organization.
 
-The event provided valuable strategic insights into AI adoption, innovation initiatives and future opportunities.
+Key Highlights
 
-Key Highlights:
+${request.keyHighlights
+                    .split("\n")
+                    .filter(line => line.trim())
+                    .map(line => `• ${line.trim()}`)
+                    .join("\n")}
 
-${request.keyHighlights}
+Please ensure you have marked your calendar and plan to attend.
 
-The outcomes from this event will help guide future investment and technology decisions.
+${closingMessage}
 
-Corporate Communications`
-
+Corporate Communications`,
         };
 
     }
-
     private static buildPartnerAnnouncement(
         request: GenerateDraftRequest
     ): CommunicationResponse {
 
+        const closingMessage =
+            request.tone === "Friendly"
+                ? "We can't wait to see you there and make this event a memorable one!"
+                : "Thank you for your attention and participation.";
+
+
         return {
+            subject: `Announcement: ${request.eventName}`,
 
-            subject: `Partnership Announcement: ${request.eventName}`,
+            communication: `Dear ${request.audience},
 
-            communication: `Dear Valued Partners,
+We are excited to announce the upcoming ${request.eventName}, scheduled for ${request.eventDate}.
 
-We are pleased to share the successful outcome of ${request.eventName}.
+This event will bring together colleagues to learn, collaborate, and share valuable insights.
 
-The event strengthened collaboration and highlighted exciting opportunities to work together.
+Key Highlights
 
-Key Highlights:
+${request.keyHighlights
+                    .split("\n")
+                    .filter(line => line.trim())
+                    .map(line => `• ${line.trim()}`)
+                    .join("\n")}
 
-${request.keyHighlights}
+We encourage everyone to attend and look forward to your participation.
 
-Thank you for your continued partnership.
+${closingMessage}
 
-Corporate Communications`
-
+Corporate Communications`,
         };
 
     }

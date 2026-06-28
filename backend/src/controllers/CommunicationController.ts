@@ -2,8 +2,8 @@ import { Request, Response, NextFunction } from "express";
 
 import { CommunicationService } from "../services/CommunicationService";
 
-import { GenerateDraftRequest } from "../models/CommunicationReq";
-import { RefineDraftRequest } from "../models/CommunicationRes";
+import { GenerateDraftRequest, RefineDraftRequest } from "../models/CommunicationReq";
+
 
 export class CommunicationController {
 
@@ -28,7 +28,7 @@ export class CommunicationController {
             const response =
                 await this.communicationService.generateDraft(request);
 
-            return res.status(200).json({
+             res.status(200).json({
                 success: true,
                 data: response
             });
@@ -58,7 +58,7 @@ export class CommunicationController {
             const response =
                 await this.communicationService.refineDraft(request);
 
-            return res.status(200).json({
+             res.status(200).json({
                 success: true,
                 data: response
             });

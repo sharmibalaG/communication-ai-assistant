@@ -1,8 +1,8 @@
 import { DraftTemplates } from "./mock/DraftTemplates";
 import { RefineTemplates } from "./mock/RefineTemplates";
 
-import type { GenerateDraftRequest } from "../models/CommunicationReq";
-import type { RefineDraftRequest } from "../models/CommunicationRes";
+import type { GenerateDraftRequest, RefineDraftRequest } from "../models/CommunicationReq";
+
 
 import type { CommunicationResponse } from "./ProviderType";
 import type { LLMProvider } from "./LLMProvider";

@@ -138,10 +138,11 @@ const [errors, setErrors] = useState<Record<string, string[] | undefined>>({});
               onBlur={handleBlur}
               className="h-11 w-full rounded-lg border border-gray-300 px-3"
             >
-              <option value="">Select</option>
-              <option>Event Recap</option>
-              <option>Executive Summary</option>
-              <option>Announcement</option>
+              <option value="">{t("select")}</option>
+               <option>{t("partnerAnnouncement")}</option>
+               <option>{t("excutiveRemaindar")}</option>
+              <option>{t("eventRecap")}</option>
+                
             </select>
             <FieldError error={errors.communicationType} />
           </div>
