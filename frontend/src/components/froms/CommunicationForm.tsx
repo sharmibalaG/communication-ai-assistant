@@ -77,7 +77,7 @@ const [errors, setErrors] = useState<Record<string, string[] | undefined>>({});
             id: 1,
             subject: response.subject,
             communication: response.communication,
-            refinement: "Original",
+            refinement: "Professional",
             createdAt: new Date(),
         },
 ]);

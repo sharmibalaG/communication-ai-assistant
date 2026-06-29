@@ -1,10 +1,20 @@
 export default {
   appTitle: "Communication Assistant",
-  create: "Create",
+  create: "New",
   draftRefine: "Draft & Refine",
   finalize: "Finalize",
 
+  introText:"AI-powered assistant for internal communications",
+  introDescrtion:"Create professional announcements, reminders and event recaps in minutes. Save time while maintaining a consistent corporate tone.",
+  launchAssitant:"Launch Assistant →",
+  quickStart:"Quick Start",
+  workflowDetails:"Follow a simple workflow to generate and refine communications with AI.",
+  communicationTypes:"Communication Types",
   communicationType: "Communication Type",
+  workflowDescription:"Choose the type of internal communication you want to create.",
+  capabilities:"AI Capabilities",
+  descriptionAI:"Improve communication quality with intelligent AI assistance.",
+
   description: "Provide the details below to generate your communication.",
   audience: "Audience",
   eventName: "Event Name",
@@ -27,7 +37,7 @@ export default {
   refineDescriptionText:"Review the generated communication and refine it before finalizing.",
   subject: "Subject",
   communication: "Communication",
-  refinePlaceholder:"You can edit the generated communication directly & click refine to get results",
+  refinePlaceholder:"You can edit the generated communication directly & select refine options to get the results",
   refinecommunication: "Refine Communication",
   refineHeaderPlaceholder:"Choose how you'd like to refine your communication.",
   professionalPlaceholder:"Clear, formal and concise",
@@ -36,14 +46,14 @@ export default {
   shorter:"Shorter",
 
   versionHistory : "Version History",
-  original:"Original",
+  original:"Professional",
 
 
   generateDraft: "Generate Draft",
   refine: "Refine",
   finalizeButton: "Finalize",
   back: "Back",
-  export: "Export",
+  export: "Export as TXT",
   copy:"Copy Text",
   readyToShare:"✓ Ready to Share",
   startNewCommunication:"Start New",

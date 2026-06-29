@@ -20,7 +20,7 @@ interface DraftCommunicationProps {
 
 const refinementOptions = [
   {
-    id: "professional",
+    id: "Professional",
     title: "Professional",
     description: "Clear, formal and concise",
   },
@@ -46,14 +46,19 @@ const DraftCommunication = ({
  
   const { t } = useTranslation();  
   const [selectedOption, setSelectedOption] =
-    useState("professional");
+    useState("Professional");
 
     const {
         refine,
-        loading
+        loading,
+        error
     } = useCommunicationForm();
 
-  const handleRefine = async () => {
+    const [selectedVersionId, setSelectedVersionId] = useState(
+            versions[0]?.id ?? 0
+    );
+
+const handleRefine = async () => {
     const response = await refine({
 
         subject: draft.subject,
@@ -64,19 +69,21 @@ const DraftCommunication = ({
 
     });
   
-    setVersions((prev) => [
-    ...prev,
-    {
-        id: prev.length + 1,
-        subject: response.subject,
-        communication: response.communication,
-        refinement: selectedOption,
-        createdAt: new Date(),
-    },
-    ]);
+    const newVersion = {
+    id: versions.length + 1,
+    subject: response.subject,
+    communication: response.communication,
+    refinement: selectedOption,
+    createdAt: new Date(),
+    };
+
+    setVersions((prev) => [...prev, newVersion]);
+
+    setSelectedVersionId(newVersion.id);
 
     setDraft(response);
   };
+
 
   // version click
 
@@ -91,6 +98,10 @@ const DraftCommunication = ({
         subject: version.subject,
         communication: version.communication,
     });
+   
+      // Highlight the corresponding refinement option
+     setSelectedVersionId(id);
+    setSelectedOption(version.refinement);
 
 };
 
@@ -111,7 +122,7 @@ const DraftCommunication = ({
 
       <div className="relative">
         {/* Loading Overlay */}
-        {loading && (
+        {loading && !error &&(
             <div className="absolute inset-0 z-20 flex items-center justify-center rounded-xl bg-white/80 backdrop-blur-sm">
             <div className="flex flex-col items-center gap-4 rounded-lg bg-white px-8 py-6 shadow-lg">
                 <div className="h-10 w-10 animate-spin rounded-full border-4 border-[#8b1d41] border-t-transparent"></div>
@@ -208,16 +219,14 @@ const DraftCommunication = ({
           <div className="space-y-4">
 
             {refinementOptions.map((option) => {
-
               const selected =
-                option.id === selectedOption;
-
+                option.id == selectedOption;
               return (
 
                 <button
                   key={option.id}
                   type="button"
-                  onClick={() =>
+                onClick={() =>
                     setSelectedOption(option.id)
                   }
                   className={`w-full rounded-lg border p-4 text-left transition
@@ -253,6 +262,7 @@ const DraftCommunication = ({
 
             <VersionHistory
                 versions={versions}
+                currentVersionId={selectedVersionId}
                 onSelectVersion={handleVersionSelect}
             />
 
@@ -261,6 +271,12 @@ const DraftCommunication = ({
       </div>
      </div> 
       {/* Footer */}
+
+       {error && (
+            <div className="mb-4 mt-4 rounded-lg border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700">
+                {error}
+            </div>
+        )}
 
       <div className="mt-8 flex justify-end gap-4">
 

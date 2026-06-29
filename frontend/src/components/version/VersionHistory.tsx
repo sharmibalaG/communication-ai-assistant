@@ -3,6 +3,7 @@ import { useTranslation } from "react-i18next";
 
 const VersionHistory = ({
     versions,
+    currentVersionId,
     onSelectVersion,
 }: VersionHistoryProps) => {
      const { t } = useTranslation();  
@@ -19,16 +20,21 @@ const VersionHistory = ({
 
                 {versions.map((version) => {
 
+                const selected = version.id === currentVersionId;
+
                     return (
 
                         <button
                             key={version.id}
                             type="button"
                             onClick={() => onSelectVersion(version.id)}
-                            className={`w-full rounded-lg border p-3 text-left transition border-gray-200 hover:border-[#8b1d41]`}
-
-                           
-                        >
+                            className={`w-full rounded-lg border p-3 text-left transition
+                            ${
+                            selected
+                                ? "border-[#8b1d41] bg-red-50"
+                                : "border-gray-200 hover:border-[#8b1d41]"
+                            }`}
+                            >
 
                             <div className="flex items-center justify-between">
 

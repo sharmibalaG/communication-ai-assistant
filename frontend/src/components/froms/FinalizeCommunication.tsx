@@ -148,7 +148,7 @@ ${draft.communication}`;
             <button
             type="button"
             onClick={onNewCommunication}
-            className="w-full whitespace-nowrap rounded-lg bg-[#8b1d41] px-6 py-3 font-medium text-white transition hover:bg-[#741635] sm:w-auto"
+            className="w-full whitespace-nowrap rounded-lg border border-[#8b1d41] px-6 py-3 font-medium text-[#8b1d41] transition hover:bg-red-50 sm:w-auto"
             >
             {t("startNewCommunication")}
             </button>
