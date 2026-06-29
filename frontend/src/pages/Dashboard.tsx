@@ -1,7 +1,7 @@
 import { useState } from 'react';
-import CreateCommunication from '../components/froms/CommunicationForm';
-import DraftCommunication  from '../components/froms/DraftCommunication';
-import FinalizeCommunication from '../components/froms/FinalizeCommunication';
+import CreateCommunication from '../components/forms/CommunicationForm';
+import DraftCommunication  from '../components/forms/DraftCommunication';
+import FinalizeCommunication from '../components/forms/FinalizeCommunication';
 import type { CommunicationResponse } from '../models/CommunicationResponse';
 import type { CommunicationVersion } from '../models/CommunicationVersion';
 

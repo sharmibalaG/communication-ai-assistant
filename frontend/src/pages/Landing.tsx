@@ -9,7 +9,7 @@ const LandingPage = ({ onLaunch }: LandingPageProps) => {
 
   const { t } = useTranslation();
   return (
-    <div className="min-h-screen bg-[#f8f9fb]">
+    <div className="min-h-screen bg-[#f8f9fb] mb-8">
       {/* Hero */}
       <section className="border-b border-gray-200 bg-white">
         <div className="mx-auto max-w-7xl px-8 py-8 text-center">

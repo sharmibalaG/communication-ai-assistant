@@ -32,7 +32,7 @@ const CreateCommunication = ({setCurrentStep, setDraft, setVersions}: CreateComm
     eventName: "",
     eventDate: "",
     keyHighlights: "",
-    tone: "Professional",
+    tone: "",
   });
 
 const [errors, setErrors] = useState<Record<string, string[] | undefined>>({});
@@ -77,7 +77,7 @@ const [errors, setErrors] = useState<Record<string, string[] | undefined>>({});
             id: 1,
             subject: response.subject,
             communication: response.communication,
-            refinement: "Professional",
+            refinement: form.tone,
             createdAt: new Date(),
         },
 ]);

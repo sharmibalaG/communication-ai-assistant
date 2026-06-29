@@ -25,12 +25,12 @@ const refinementOptions = [
     description: "Clear, formal and concise",
   },
   {
-    id: "friendly",
+    id: "Friendly",
     title: "Friendly",
     description: "Warm and approachable",
   },
   {
-    id: "shorter",
+    id: "Shorter",
     title: "Shorter",
     description: "More concise and to the point",
   },
@@ -45,8 +45,9 @@ const DraftCommunication = ({
 }: DraftCommunicationProps) => {
  
   const { t } = useTranslation();  
+ 
   const [selectedOption, setSelectedOption] =
-    useState("Professional");
+    useState(versions[0].refinement);
 
     const {
         refine,
