@@ -59,30 +59,37 @@ const [errors, setErrors] = useState<Record<string, string[] | undefined>>({});
   }));
   };
 
-  const  handleGenerate = async () => {
-    const validation = communicationSchema.safeParse(form);
-    if (!validation.success) {
+const handleGenerate = async () => {
+  const validation = communicationSchema.safeParse(form);
 
-    const fieldErrors =
-      validation.error.flatten().fieldErrors;
-
+  if (!validation.success) {
+    const fieldErrors = validation.error.flatten().fieldErrors;
     setErrors(fieldErrors);
-
     return;
   }
-    const response  = await generate(form);
-     setDraft(response);
-     setVersions([
-        {
-            id: 1,
-            subject: response.subject,
-            communication: response.communication,
-            refinement: form.tone,
-            createdAt: new Date(),
-        },
-]);
-     setCurrentStep(2);
-  };
+
+  try {
+    const response = await generate(form);
+
+    setDraft(response);
+
+    setVersions([
+      {
+        id: 1,
+        subject: response.subject,
+        communication: response.communication,
+        refinement: form.tone,
+        createdAt: new Date(),
+      },
+    ]);
+
+    setCurrentStep(2);
+  } catch (error) {
+    console.error("Failed to generate communication:", error);
+    // Error state is already handled by the generate() hook/service.
+    // If not, show an error message or toast here.
+  }
+};
 
   const handleBlur = (
   e: React.FocusEvent<

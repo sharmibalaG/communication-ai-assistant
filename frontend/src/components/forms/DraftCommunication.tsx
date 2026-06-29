@@ -60,34 +60,32 @@ const DraftCommunication = ({
     );
 
 const handleRefine = async () => {
+  try {
     const response = await refine({
-
-        subject: draft.subject,
-
-        communication: draft.communication,
-
-        refinement: selectedOption
-
+      subject: draft.subject,
+      communication: draft.communication,
+      refinement: selectedOption,
     });
-  
+
     const newVersion = {
-    id: versions.length + 1,
-    subject: response.subject,
-    communication: response.communication,
-    refinement: selectedOption,
-    createdAt: new Date(),
+      id: versions.length + 1,
+      subject: response.subject,
+      communication: response.communication,
+      refinement: selectedOption,
+      createdAt: new Date(),
     };
 
     setVersions((prev) => [...prev, newVersion]);
-
     setSelectedVersionId(newVersion.id);
-
     setDraft(response);
-  };
-
+  } catch (error) {
+    console.error("Failed to refine communication:", error);
+    // Error state is already handled by the refine() hook/service.
+    // If not, display an error message here.
+  }
+};
 
   // version click
-
   const handleVersionSelect = (id: number) => {
 
     const version =
