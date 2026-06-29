@@ -32,7 +32,7 @@ const CreateCommunication = ({setCurrentStep, setDraft, setVersions}: CreateComm
     eventName: "",
     eventDate: "",
     keyHighlights: "",
-    tone: "",
+    tone: "Professional",
   });
 
 const [errors, setErrors] = useState<Record<string, string[] | undefined>>({});
