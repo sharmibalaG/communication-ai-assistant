@@ -3,7 +3,7 @@ import { useState } from "react";
 
 import Header from "./pages/Header";
 import Dashboard from "./pages/Dashboard";
-import LandingPage from "./pages/landing";
+import LandingPage from "./pages/Landing";
 
 import Stepper from "./components/stepper";
 import type { StepItem } from "./components/stepper/Stepper.types";
