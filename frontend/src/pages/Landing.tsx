@@ -56,7 +56,7 @@ const LandingPage = ({ onLaunch }: LandingPageProps) => {
             {[
               "Launch Assistant",
               "Enter communication details",
-              "Generate & AI draft",
+              "Generate an AI draft",
               "Review and refine",
               "Finalize and export",
             ].map((step, index) => (
