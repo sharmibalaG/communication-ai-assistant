@@ -56,7 +56,7 @@ const LandingPage = ({ onLaunch }: LandingPageProps) => {
             {[
               "Launch Assistant",
               "Enter communication details",
-              "Generate AI draft",
+              "Generate & AI draft",
               "Review and refine",
               "Finalize and export",
             ].map((step, index) => (
@@ -86,7 +86,7 @@ const LandingPage = ({ onLaunch }: LandingPageProps) => {
             <FileText className="h-8 w-8 text-[#8b1d41]" />
 
             <h2 className="text-2xl font-semibold text-[#8b1d41]">
-               {t(" communicationTypes")}
+               {t("communicationTypes")}
             </h2>
             </div>
 
@@ -103,7 +103,7 @@ const LandingPage = ({ onLaunch }: LandingPageProps) => {
               },
               {
                 title: "Event Reminder",
-                text: "Notify participants before important events.",
+                text: "Remind participants about upcoming events.",
               },
               {
                 title: "Event Recap",
@@ -150,7 +150,7 @@ const LandingPage = ({ onLaunch }: LandingPageProps) => {
           <div className="mt-8 space-y-5">
 
             {[
-              "Generate draft in seconds",
+              "Generate drafts in seconds",
               "Professional refinement",
               "Friendly tone",
               "Shorter version",
